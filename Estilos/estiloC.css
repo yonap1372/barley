@@ -3,7 +3,7 @@ body {
   font-family: 'Georgia', serif;
   background-color: #000;
   color: #fff;
-  background-image: url('fondo.jpg'); /* Fondo general, lo puedes cambiar */
+  background-image: url('FONDO.jpg');
   background-repeat: repeat;
   background-size: contain;
   background-position: center;
