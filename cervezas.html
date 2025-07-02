@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cerveza Barley</title>
+  <link rel="stylesheet" href="/Estilos/estiloC.css"/>
+  <link rel="icon" href="imagen/favicon-32x32.png" type="image/png" />
+</head>
+
+<body>
+  <!-- Encabezado global -->
+  <header>
+    <nav>
+      <a href="Index.html">Inicio</a>
+      <a href="origen.html">¿De dónde y a dónde?</a>
+      <a href="cervezas.html" class="activo">Cervezas</a>
+      <a href="conocenos.html">Conócenos</a>
+      <a href="chat.html">Chat Bot</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+  </header>
+
+  <main class="cervezas">
+    <h1 class="titulo-pagina">Nuestras Cervezas</h1>
+
+    <div class="contenedor-cervezas">
+      <div class="cerveza" onclick="mostrarCerveza(1)">Jabalí Salvajita</div>
+      <div class="cerveza" onclick="mostrarCerveza(2)">Jabalí IPA</div>
+      <div class="cerveza" onclick="mostrarCerveza(3)">Jabalí Hellesbock</div>
+      <div class="cerveza" onclick="mostrarCerveza(4)">Jabalí Bock</div>
+    </div>
+
+    <div id="infoCerveza" class="info-cerveza">
+      <h2 id="nombreCerveza">Selecciona una presentación</h2>
+      <p id="descripcionCerveza"></p>
+      <ul id="detallesCerveza"></ul>
+      <img id="imagenCerveza" class="imagen-cerveza" src="Imagen/cervesas.png" alt="Imagen de la cerveza seleccionada">
+    </div>
+  </main>
+
+  <!-- Pie de página -->
+  <footer class="footer-principal">
+    <div class="footer-logo">
+      <h2>Barley</h2>
+    </div>
+    <div class="footer-enlaces">
+      <a href="#">Términos y condiciones de uso</a>
+      <a href="#">Aviso de privacidad</a>
+      <a href="#">Hablemos de alcohol</a>
+      <a href="#">Contáctanos</a>
+      <a href="#">Cerveza Barley ©</a>
+    </div>
+    <div class="footer-mensaje">
+      <p class="advertencia">NO COMPARTAS ESTE CONTENIDO CON MENORES DE EDAD</p>
+      <p class="responsable">TODO CON MEDIDA — PROHIBIDA LA VENTA DE ALCOHOL A MENORES</p>
+      <div class="footer-iconos">
+        <span>🔞</span>
+        <span>🍺</span>
+        <span>✔️</span>
+      </div>
+      <p class="copyright">BUZZILLA © Todos los derechos reservados 2025</p>
+    </div>
+  </footer>
+
+  <!-- Carrito flotante -->
+  <div id="carritoFlotante" onclick="mostrarCarrito()">🛒</div>
+
+  <!-- Panel lateral del carrito -->
+  <div id="carritoLateral" class="carrito-lateral">
+    <div class="carrito-header">
+      <h2>🛒 Tu Carrito</h2>
+      <span class="cerrar" onclick="cerrarCarrito()">×</span>
+    </div>
+    <div class="carrito-items" id="carritoItems"></div>
+    <div class="carrito-footer">
+      <p>Total: $<span id="totalCarrito">0.00</span> MXN</p>
+      <button onclick="finalizarCompra()">Finalizar compra</button>
+    </div>
+  </div>
+
+  <!-- Script principal -->
+  <script>
+    const cervezas = [
+      {
+        nombre: "Jabalí Salvajita",
+        descripcion: "Cerveza ligera, color paja claro, aroma dulce y de cereales provenientes de la malta...",
+        detalles: ["Estilo: Light Lager", "Vol. Alc: 3.6%", "Temperatura: 4°C", "Contenido: 330 ML", "Maridaje: mariscos"],
+        imagen: "Imagen/ST.png"
+      },
+      {
+        nombre: "Jabalí IPA",
+        descripcion: "Color ámbar, aroma a frutas tropicales y amargor refrescante.",
+        detalles: ["Estilo: IPA", "Vol. Alc: 5.4%", "Temperatura: 4°C", "Contenido: 330 ML", "Maridaje: platos especiados"],
+        imagen: "Imagen/IP.png"
+      },
+      {
+        nombre: "Jabalí Hellesbock",
+        descripcion: "Color claro, aroma dulce, amargor persistente con notas florales.",
+        detalles: ["Estilo: Stout", "Vol. Alc: 8.1%", "Temperatura: 6°C", "Contenido: 330 ML", "Maridaje: quesos y carnes"],
+        imagen: "Imagen/HB.png"
+      },
+      {
+        nombre: "Jabalí Bock",
+        descripcion: "Cerveza oscura, aroma a maltas tostadas y sabor robusto.",
+        detalles: ["Estilo: Stout", "Vol. Alc: 6.3%", "Temperatura: 6°C", "Contenido: 330 ML", "Maridaje: todo tipo de comida"],
+        imagen: "Imagen/B.png"
+      }
+    ];
+
+    function mostrarCerveza(index) {
+      const cerveza = cervezas[index - 1];
+      document.getElementById('nombreCerveza').textContent = cerveza.nombre;
+      document.getElementById('descripcionCerveza').textContent = cerveza.descripcion;
+
+      const lista = document.getElementById('detallesCerveza');
+      lista.innerHTML = '';
+      cerveza.detalles.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        lista.appendChild(li);
+      });
+
+      const imagen = document.getElementById('imagenCerveza');
+      imagen.src = cerveza.imagen;
+      imagen.alt = `Imagen de ${cerveza.nombre}`;
+
+      // Botón agregar al carrito
+      const infoDiv = document.getElementById('infoCerveza');
+      let botonExistente = document.getElementById('botonCarrito');
+      if (!botonExistente) {
+        const boton = document.createElement('button');
+        boton.id = "botonCarrito";
+        boton.textContent = "Agregar al carrito";
+        boton.onclick = () => agregarAlCarrito(cerveza);
+        boton.className = "btn-agregar";
+        infoDiv.appendChild(boton);
+      } else {
+        botonExistente.onclick = () => agregarAlCarrito(cerveza);
+      }
+    }
+
+    let carrito = [];
+
+    function mostrarCarrito() {
+      document.getElementById('carritoLateral').classList.add('abierto');
+      actualizarCarrito();
+    }
+
+    function cerrarCarrito() {
+      document.getElementById('carritoLateral').classList.remove('abierto');
+    }
+
+    function agregarAlCarrito(cerveza) {
+      const index = carrito.findIndex(item => item.nombre === cerveza.nombre);
+      if (index >= 0) {
+        carrito[index].cantidad++;
+      } else {
+        carrito.push({ ...cerveza, cantidad: 1, precio: generarPrecioAleatorio() });
+      }
+      mostrarCarrito();
+    }
+
+    function actualizarCarrito() {
+      const container = document.getElementById('carritoItems');
+      container.innerHTML = '';
+      let total = 0;
+
+      carrito.forEach((item, i) => {
+        const div = document.createElement('div');
+        div.innerHTML = `
+          <p><strong>${item.nombre}</strong></p>
+          <p>Cantidad: 
+            <button onclick="cambiarCantidad(${i}, -1)">➖</button> 
+            ${item.cantidad} 
+            <button onclick="cambiarCantidad(${i}, 1)">➕</button>
+          </p>
+          <p>Precio: $${item.precio.toFixed(2)} x ${item.cantidad} = <strong>$${(item.precio * item.cantidad).toFixed(2)}</strong></p>
+          <hr>
+        `;
+        container.appendChild(div);
+        total += item.precio * item.cantidad;
+      });
+
+      document.getElementById('totalCarrito').textContent = total.toFixed(2);
+    }
+
+    function cambiarCantidad(index, delta) {
+      carrito[index].cantidad += delta;
+      if (carrito[index].cantidad <= 0) carrito.splice(index, 1);
+      actualizarCarrito();
+    }
+
+    function generarPrecioAleatorio() {
+      return Math.floor(Math.random() * 40 + 30); // $30 a $70
+    }
+
+    function finalizarCompra() {
+      alert("¡Gracias por tu compra! (función simulada)");
+      carrito = [];
+      actualizarCarrito();
+      cerrarCarrito();
+    }
+  </script>
+</body>
+</html>

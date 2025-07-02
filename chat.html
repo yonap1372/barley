@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>CerveBot | Asistente Virtual de BARLEY</title>
+  <link rel="stylesheet" href="Estilos/estiloch.css">
+</head>
+<body>
+    <header>
+        <nav>
+          <a href="./index.html">Inicio</a>
+          <a href="origen.html">¿De dónde y a dónde?</a>
+          <a href="cervezas.html">Cervezas</a>
+          <a href="conocenos.html">Conócenos</a>
+          <a href="chat.html">Chat Bot</a>
+          <a href="contacto.html">Contacto</a>
+        </nav>
+      </header>
+  <div class="chatbot-container">
+    <h1>🤖 CerveBot</h1>
+    <div class="chat-box" id="chatBox"></div>
+    <div class="user-input">
+      <input type="text" id="userInput" placeholder="Escribe tu mensaje aquí...">
+      <button onclick="sendMessage()">Enviar</button>
+    </div>
+  </div>
+
+  <script>
+    const chatBox = document.getElementById('chatBox');
+
+    function appendMessage(message, sender) {
+      const msg = document.createElement('div');
+      msg.classList.add('message', sender);
+      msg.textContent = message;
+      chatBox.appendChild(msg);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function sendMessage() {
+      const input = document.getElementById('userInput');
+      const text = input.value.trim();
+      if (text === '') return;
+
+      appendMessage(text, 'user');
+      input.value = '';
+      respondTo(text.toLowerCase());
+    }
+
+    function respondTo(message) {
+      let response = "Lo siento, no entendí eso. ¿Puedes intentar con otra pregunta?";
+
+      if (message.includes("hola") || message.includes("buenos días") || message.includes("buenas tardes") || message.includes("hey")) {
+        response = "¡Hola! Soy CerveBot 🍺 ¿En qué puedo ayudarte hoy?";
+      } else if (message.includes("gracias")) {
+        response = "¡Con gusto! Si tienes más dudas, aquí estaré. 🍻";
+      } else if (message.includes("adiós") || message.includes("hasta luego")) {
+        response = "¡Hasta pronto! ¡Salud! 🍺";
+      } else if (message.includes("ayuda") || message.includes("puedes ayudar") || message.includes("tengo una duda")) {
+        response = "¡Claro que sí! Puedes preguntarme sobre nuestros productos, pedidos, envíos y más.";
+
+      // FAQs
+      } else if (message.includes("métodos de pago")) {
+        response = "Aceptamos pagos en efectivo, transferencia bancaria, y tarjeta (física y en línea).";
+      } else if (message.includes("envíos") || message.includes("entregas")) {
+        response = "Actualmente entregamos en Nezahualcóyotl y zonas cercanas. Con la web, enviaremos a todo México por Estafeta y DHL.";
+      } else if (message.includes("horario")) {
+        response = "Tienda física: Lun-Sáb de 12:00 a.m. a 9:00 p.m. En línea: 24/7.";
+      } else if (message.includes("ubicación")) {
+        response = "Estamos en Nezahualcóyotl, Estado de México. ¡Te mandamos la ubicación por mensaje privado!";
+      } else if (message.includes("tipos de cerveza") || message.includes("qué cervezas")) {
+        response = "Manejamos IPA, Stout, Lager y Blonde Ale artesanales mexicanas.";
+      } else if (message.includes("promociones")) {
+        response = "Consulta nuestras promociones en Instagram, historias destacadas o publicaciones.";
+      } else if (message.includes("pedido") && message.includes("hacer")) {
+        response = "Puedes pedir por Instagram, WhatsApp o en la tienda. En la web también podrás hacer pedidos para envío.";
+      } else if (message.includes("personalizar") || message.includes("evento")) {
+        response = "Sí, personalizamos pedidos para eventos. Escríbenos en redes para cotizar.";
+      } else if (message.includes("cuánto tarda") || message.includes("entrega")) {
+        response = "Pedidos locales: mismo día o siguiente. Web: de 3 a 5 días.";
+      } else if (message.includes("contactar") || message.includes("atención")) {
+        response = "Escríbenos por WhatsApp o Instagram. Te atenderemos pronto.";
+
+      // Recomendaciones
+      } else if (message.includes("recomienda") || message.includes("sugerencia")) {
+        response = "¿Qué prefieres?\n- IPA: intensa y amarga\n- Lager: ligera y refrescante\n- Stout: oscura y cremosa\n- Ale: frutal, de temporada";
+      } else if (message.includes("ipa")) {
+        response = "La IPA es ideal si te gusta el sabor amargo e intenso.";
+      } else if (message.includes("lager")) {
+        response = "La Lager es una cerveza ligera y muy refrescante.";
+      } else if (message.includes("stout")) {
+        response = "La Stout es cremosa, oscura, con mucho carácter.";
+      } else if (message.includes("ale")) {
+        response = "Nuestra Ale de temporada tiene un toque frutal, muy popular.";
+
+      // Seguimiento
+      } else if (message.includes("seguimiento") || message.includes("rastrear") || message.includes("pedido")) {
+        response = "Para rastrear tu pedido, proporciona tu número de pedido, nombre o correo. Si ya fue enviado, puedes rastrearlo aquí:\nDHL: https://www.dhl.com/mx-es/home/rastreo.html\nEstafeta: https://www.estafeta.com/Herramientas/Rastreo";
+      }
+
+      appendMessage(response, 'bot');
+    }
+  </script>
+   <!-- Pie de página -->
+   <footer class="footer-principal">
+    <div class="footer-logo">
+      <h2>Barley</h2>
+    </div>
+    <div class="footer-enlaces">
+      <a href="#">Términos y condiciones de uso</a>
+      <a href="#">Aviso de privacidad</a>
+      <a href="#">Hablemos de alcohol</a>
+      <a href="#">Contáctanos</a>
+      <a href="#">Cerveza Barley ©</a>
+    </div>
+    <div class="footer-mensaje">
+      <p class="advertencia">NO COMPARTAS ESTE CONTENIDO CON MENORES DE EDAD</p>
+      <p class="responsable">TODO CON MEDIDA — PROHIBIDA LA VENTA DE ALCOHOL A MENORES</p>
+      <div class="footer-iconos">
+        <span>🔞</span>
+        <span>🍺</span>
+        <span>✔️</span>
+      </div>
+      <p class="copyright">BUZZILLA © Todos los derechos reservados 2025</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cerveza Barley</title>
+  <link rel="stylesheet" href="estilos/estiloCO.css" />
+    <link rel="icon" href="imagen/favicon-32x32.png" type="image/png">
+
+</head>
+<body>
+
+  <!-- Encabezado -->
+  <header>
+    <nav>
+      <a href="./index.html">Inicio</a>
+      <a href="./origen.html">¿De dónde y a dónde?</a>
+      <a href="./cervezas.html">Cervezas</a>
+      <a href="./conocenos.html" class="activo">Conócenos</a>
+      <a href="chat.html">Chat Bot</a>
+      <a href="./contacto.html">Contacto</a>
+    </nav>
+  </header>
+
+  <!-- Contenido principal -->
+  <main class="conocenos-main">
+    <h1>COMERCIALIZADORA DE CALIDAD</h1>
+
+   <section class="slider-container">
+  <div class="slider">
+    <div class="slide activo">
+      <img src="imagen/CV1.jpg" alt="Beneficio 1">
+    </div>
+    <div class="slide">
+      <img src="imagen/CV2.jpg" alt="Beneficio 2">
+    </div>
+    <div class="slide">
+      <img src="imagen/CV3.jpg" alt="Beneficio 3">
+    </div>
+
+    <button class="prev" onclick="cambiarSlide(-1)">❮</button>
+    <button class="next" onclick="cambiarSlide(1)">❯</button>
+  </div>
+</section>
+
+  </main>
+
+  <!-- Pie de página -->
+  <footer class="footer-principal">
+    <div class="footer-logo">
+      <h2>Barley</h2>
+    </div>
+
+    <div class="footer-enlaces">
+      <a href="#">Términos y condiciones de uso</a>
+      <a href="#">Aviso de privacidad</a>
+      <a href="#">Hablemos de alcohol</a>
+      <a href="#">Contáctanos</a>
+      <a href="#">Cerveza Barley ©</a>
+    </div>
+
+    <div class="footer-mensaje">
+      <p class="advertencia">NO COMPARTAS ESTE CONTENIDO CON MENORES DE EDAD</p>
+      <p class="responsable">TODO CON MEDIDA — PROHIBIDA LA VENTA DE ALCOHOL A MENORES</p>
+      <div class="footer-iconos">
+        <span>🔞</span>
+        <span>🍺</span>
+        <span>✔️</span>
+      </div>
+      <p class="copyright">BUZZILLA © Todos los derechos reservados 2025</p>
+    </div>
+  </footer>
+
+<script>
+  let indiceSlide = 0;
+  const slides = document.querySelectorAll('.slide');
+
+  function mostrarSlide(nuevoIndice) {
+    slides[indiceSlide].classList.remove('activo');
+    indiceSlide = (nuevoIndice + slides.length) % slides.length;
+    slides[indiceSlide].classList.add('activo');
+  }
+
+  function cambiarSlide(direccion) {
+    mostrarSlide(indiceSlide + direccion);
+  }
+</script>
+
+</body>
+</html>

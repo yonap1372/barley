@@ -1,0 +1,121 @@
+body {
+  margin: 0;
+  font-family: 'Georgia', serif;
+  background-image: url('../Imagen/FONDO.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  color: white;
+}
+
+/* Menú */
+nav {
+  background-color: #000;
+  padding: 15px 0;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 20px;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+nav a.activo,
+nav a:hover {
+  color: #FFD700;
+}
+
+/* Contenido principal */
+.inicio {
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.inicio h1 {
+  font-size: 3em;
+  color: #13120b;
+  text-shadow: 3px 3px 0 #fff;
+  margin-bottom: 20px;
+}
+
+.boton-amarillo {
+  display: inline-block;
+  background-color: #FFD700;
+  color: black;
+  padding: 12px 25px;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.boton-amarillo:hover {
+  background-color: #e0c200;
+}
+
+/* Pie de página */
+.contacto {
+  background-color: #111;
+  padding: 20px;
+  text-align: center;
+  color: #FFD700;
+}
+.footer-principal {
+  background-color: #111;
+  color: #FFD700;
+  padding: 30px 20px;
+  text-align: center;
+  font-size: 0.9em;
+}
+
+.footer-logo h2 {
+  font-family: 'Georgia', serif;
+  font-size: 2em;
+  margin-bottom: 10px;
+  color: #FFD700;
+}
+
+.footer-enlaces {
+  margin: 10px 0;
+}
+
+.footer-enlaces a {
+  color: #FFD700;
+  margin: 0 10px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.footer-enlaces a:hover {
+  text-decoration: underline;
+}
+
+.footer-mensaje {
+  margin-top: 20px;
+}
+
+.footer-mensaje .advertencia {
+  color: #ff5555;
+  font-weight: bold;
+}
+
+.footer-mensaje .responsable {
+  margin: 5px 0;
+  font-weight: bold;
+}
+
+.footer-iconos span {
+  margin: 0 8px;
+  font-size: 1.5em;
+}
+
+.footer-mensaje p {
+  margin: 5px 0;
+}
