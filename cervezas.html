@@ -5,11 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Cerveza Barley</title>
   <link rel="stylesheet" href="/Estilos/estiloC.css"/>
-  <link rel="icon" href="imagen/favicon-32x32.png" type="image/png" />
+  <link rel="icon" href="Imagen/favicon-32x32.png" type="image/png" />
 </head>
 
 <body>
-  <!-- Encabezado global -->
   <header>
     <nav>
       <a href="Index.html">Inicio</a>
@@ -39,7 +38,6 @@
     </div>
   </main>
 
-  <!-- Pie de página -->
   <footer class="footer-principal">
     <div class="footer-logo">
       <h2>Barley</h2>
@@ -63,10 +61,8 @@
     </div>
   </footer>
 
-  <!-- Carrito flotante -->
   <div id="carritoFlotante" onclick="mostrarCarrito()">🛒</div>
 
-  <!-- Panel lateral del carrito -->
   <div id="carritoLateral" class="carrito-lateral">
     <div class="carrito-header">
       <h2>🛒 Tu Carrito</h2>
@@ -79,7 +75,6 @@
     </div>
   </div>
 
-  <!-- Script principal -->
   <script>
     const cervezas = [
       {
@@ -125,7 +120,6 @@
       imagen.src = cerveza.imagen;
       imagen.alt = `Imagen de ${cerveza.nombre}`;
 
-      // Botón agregar al carrito
       const infoDiv = document.getElementById('infoCerveza');
       let botonExistente = document.getElementById('botonCarrito');
       if (!botonExistente) {
@@ -192,7 +186,7 @@
     }
 
     function generarPrecioAleatorio() {
-      return Math.floor(Math.random() * 40 + 30); // $30 a $70
+      return Math.floor(Math.random() * 40 + 30);
     }
 
     function finalizarCompra() {

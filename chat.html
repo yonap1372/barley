@@ -58,7 +58,6 @@
       } else if (message.includes("ayuda") || message.includes("puedes ayudar") || message.includes("tengo una duda")) {
         response = "¡Claro que sí! Puedes preguntarme sobre nuestros productos, pedidos, envíos y más.";
 
-      // FAQs
       } else if (message.includes("métodos de pago")) {
         response = "Aceptamos pagos en efectivo, transferencia bancaria, y tarjeta (física y en línea).";
       } else if (message.includes("envíos") || message.includes("entregas")) {
@@ -80,7 +79,6 @@
       } else if (message.includes("contactar") || message.includes("atención")) {
         response = "Escríbenos por WhatsApp o Instagram. Te atenderemos pronto.";
 
-      // Recomendaciones
       } else if (message.includes("recomienda") || message.includes("sugerencia")) {
         response = "¿Qué prefieres?\n- IPA: intensa y amarga\n- Lager: ligera y refrescante\n- Stout: oscura y cremosa\n- Ale: frutal, de temporada";
       } else if (message.includes("ipa")) {
@@ -92,7 +90,6 @@
       } else if (message.includes("ale")) {
         response = "Nuestra Ale de temporada tiene un toque frutal, muy popular.";
 
-      // Seguimiento
       } else if (message.includes("seguimiento") || message.includes("rastrear") || message.includes("pedido")) {
         response = "Para rastrear tu pedido, proporciona tu número de pedido, nombre o correo. Si ya fue enviado, puedes rastrearlo aquí:\nDHL: https://www.dhl.com/mx-es/home/rastreo.html\nEstafeta: https://www.estafeta.com/Herramientas/Rastreo";
       }
@@ -100,7 +97,6 @@
       appendMessage(response, 'bot');
     }
   </script>
-   <!-- Pie de página -->
    <footer class="footer-principal">
     <div class="footer-logo">
       <h2>Barley</h2>
